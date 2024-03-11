@@ -9,14 +9,15 @@ namespace DaoDucManh_21115053120332_LinQJoin
         {
             try
             {
-                Console.WriteLine("Nhap tu 1 - 7 de thuc hien cac chuc nang sau:");
+                Console.WriteLine("Nhap tu 1 - 8 de thuc hien cac chuc nang sau:");
                 Console.WriteLine("1. Hien thi luong cao nhat");
                 Console.WriteLine("2. Hien thi luong thap nhat");
                 Console.WriteLine("3. Hien thi luong trung binh");
                 Console.WriteLine("4. GroupJoin");
                 Console.WriteLine("5. LeftJoin");
-                Console.WriteLine("6. Hien thi tuoi cao nhat");
-                Console.WriteLine("7. Hien thi tuoi thap nhat");
+                Console.WriteLine("6. RightJoin");
+                Console.WriteLine("7. Hien thi tuoi cao nhat");
+                Console.WriteLine("8. Hien thi tuoi thap nhat");
                 int menu = 0;
                 menu = Convert.ToInt32(Console.ReadLine());
                 switch (menu)
@@ -48,16 +49,21 @@ namespace DaoDucManh_21115053120332_LinQJoin
                         }
                     case 6:
                         {
-                            list.GetMaxAge();
+                            list.GetRightJoin();
                             break;
                         }
                     case 7:
+                        {
+                            list.GetMaxAge();
+                            break;
+                        }
+                    case 8:
                         {
                             list.GetMinAge();
                             break;
                         }
                     default:
-                        Console.WriteLine("Yeu cau nhap chuc nang cua menu tu 1 - 7");
+                        Console.WriteLine("Yeu cau nhap chuc nang cua menu tu 1 - 8");
                         Menu();
                         break;
                 }

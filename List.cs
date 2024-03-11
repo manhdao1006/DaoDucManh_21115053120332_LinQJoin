@@ -36,6 +36,7 @@ namespace DaoDucManh_21115053120332_LinQJoin
                                             Department = d,
                                             Employee = eGroup
                                         };
+            Console.WriteLine("Danh sach GroupJoin");
             foreach (var department in employeesByDepartment)
             {
                 Console.WriteLine("Ten department: " + department.Department.Name);
@@ -57,10 +58,29 @@ namespace DaoDucManh_21115053120332_LinQJoin
                                    EmployeeName = e.Name,
                                    DepartmentName = d == null ? "No Department" :d.Name
                                };
-            foreach (var employee in listLeftJoin)
+            Console.WriteLine("Danh sach LeftJoin");
+            foreach (var item in listLeftJoin)
             {
-                Console.WriteLine("{0} - {1}", employee.EmployeeName, employee.DepartmentName);
+                Console.WriteLine("{0} - {1}", item.EmployeeName, item.DepartmentName);
             }
+        }
+        public void GetRightJoin()
+        {
+            var listRightJoin = from d in departments
+                                 join e in employees
+                                 on d.ID equals e.DepartmentID into eGroup
+                                 from e in eGroup.DefaultIfEmpty()
+                                 select new
+                                 {
+                                     DepartmentName = d.Name,
+                                     EmployeeName = (e == null) ? null : e.Name
+                                 };
+            Console.WriteLine("Danh sach RightJoin");
+            foreach (var item in listRightJoin)
+            {
+                Console.WriteLine("{0} - {1}", item.DepartmentName, item.EmployeeName);
+            }
+
         }
         public void GetMaxAge()
         {
